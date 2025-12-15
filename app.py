@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from models.user import create_user, get_user_by_email  # import user functions
+from models.user import create_user, get_user_by_email
 
 app = Flask(__name__)
-CORS(app)  # allow frontend requests
+CORS(app)
 
 @app.route("/")
 def home():
@@ -12,31 +12,24 @@ def home():
 # ---------------- SIGNUP ROUTE ----------------
 @app.route("/signup", methods=["POST"])
 def signup():
-    data = request.get_json()  # get JSON data from request
+    data = request.get_json()
     username = data.get("username")
     email = data.get("email")
     password = data.get("password")
 
-    # Simple validation
     if not username or not email or not password:
         return jsonify({"error": "Please provide username, email, and password"}), 400
 
-    # Check if user already exists
     if get_user_by_email(email):
         return jsonify({"error": "Email already registered"}), 400
 
-    # Create user
-    success = create_user(username, email, password)
-    if success:
+    if create_user(username, email, password):
         return jsonify({"message": "User created successfully"}), 201
-    else:
-        return jsonify({"error": "Username or email already exists"}), 400
 
-# ---------------- END ROUTE ----------------
+    return jsonify({"error": "User creation failed"}), 400
 
-if __name__ == "__main__":
-    app.run(debug=True)
 
+# ---------------- LOGIN ROUTE ----------------
 @app.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
@@ -52,3 +45,8 @@ def login():
 
     return jsonify({"message": "Login successful"}), 200
 
+
+# ---------------- RUN SERVER ----------------
+if __name__ == "__main__":
+    app.run(debug=True)
+GGg
