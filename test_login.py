@@ -2,8 +2,8 @@ import requests
 
 BASE_URL = "http://127.0.0.1:5000"
 
-# ---------------- TEST SIGNUP ----------------
-print("---- Testing Signup ----")
+# TEST SIGNUP 
+print("Testing Signup")
 signup_url = f"{BASE_URL}/signup"
 signup_data = {
     "username": "testuser",
@@ -21,7 +21,7 @@ try:
 except requests.exceptions.ConnectionError:
     print("ERROR: Could not connect to the server. Make sure app.py is running.")
 
-# ---------------- TEST LOGIN ----------------
+# TEST LOGIN
 print("\n---- Testing Login ----")
 login_url = f"{BASE_URL}/login"
 login_data = {
