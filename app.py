@@ -13,7 +13,7 @@ SECRET_KEY = "paychat_secret_key"
 def home():
     return
 
-# ---------------- SIGNUP ----------------
+# SIGNUP 
 @app.route("/signup", methods=["POST"])
 def signup():
     data = request.get_json()
@@ -32,7 +32,7 @@ def signup():
 
     return jsonify({"error": "User creation failed"}), 400
 
-# ---------------- LOGIN ----------------
+# LOGIN 
 @app.route("/login", methods=["POST"])
 def login():
     data = request.json
@@ -63,7 +63,7 @@ def login():
     }), 200
 
 
-# ---------------- RUN SERVER ----------------
+# RUN SERVER
 if __name__ == "__main__":
     app.run(debug=True)
 
