@@ -7,11 +7,11 @@ from datetime import datetime, timedelta
 app = Flask(__name__)
 CORS(app)
 
-SECRET_KEY = "paychat_secret_key"  # change later for production
+SECRET_KEY = "paychat_secret_key" 
 
 @app.route("/")
 def home():
-    return "PayChat backend is running 👍"
+    return
 
 # ---------------- SIGNUP ----------------
 @app.route("/signup", methods=["POST"])
