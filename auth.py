@@ -2,7 +2,7 @@ import jwt
 from functools import wraps
 from flask import request, jsonify
 
-SECRET_KEY = "paychat_secret_key"  # later move to .env
+SECRET_KEY = "paychat_secret_key"  
 
 
 def token_required(f):
