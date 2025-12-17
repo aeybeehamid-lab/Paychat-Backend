@@ -2,7 +2,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import bcrypt
 
-# ---------------- DATABASE CONNECTION ----------------
+# DATABASE CONNECTION 
 def get_db_connection():
     conn = psycopg2.connect(
         host="localhost",
@@ -12,7 +12,7 @@ def get_db_connection():
     )
     return conn
 
-# ---------------- CREATE USER ----------------
+# CREATE USER 
 def create_user(username, email, password):
     try:
         conn = get_db_connection()
@@ -34,7 +34,7 @@ def create_user(username, email, password):
         print("Error creating user:", e)
         return False
 
-# ---------------- GET USER BY EMAIL ----------------
+# GET USER BY EMAIL 
 def get_user_by_email(email):
     try:
         conn = get_db_connection()
@@ -48,7 +48,7 @@ def get_user_by_email(email):
         print("Error fetching user:", e)
         return None
 
-# ---------------- VERIFY PASSWORD ----------------
+# VERIFY PASSWORD 
 import bcrypt
 
 
